@@ -10,8 +10,9 @@ You have the following skills available. Read them before starting work:
 |---|---|---|
 | **data-cleaning-pipeline** | `.agents/skills/data-cleaning-pipeline/SKILL.md` | Systematic data cleaning — missing values, outlier detection, type standardization, deduplication, normalization pipelines |
 | **arabic-text-processing** | `.agents/skills/arabic-text-processing/SKILL.md` | Arabic Unicode normalization, Alef/Taa Marbuta normalization, diacritics handling, Mojibake detection, Arabic deduplication keys |
+| **multi-entity-schema** | `.agents/skills/multi-entity-schema/SKILL.md` | Validate referential integrity for parent-child entities — check orphans, coverage, and cross-entity consistency |
 
-Use `data-cleaning-pipeline` for your overall validation workflow. Use `arabic-text-processing` for all Arabic text fields — normalization, validation, and deduplication matching.
+Use `data-cleaning-pipeline` for your overall validation workflow. Use `arabic-text-processing` for all Arabic text fields — normalization, validation, and deduplication matching. Use `multi-entity-schema` when validating multi-entity data — check referential integrity, orphaned children, and parent coverage.
 
 ## Your Responsibilities
 

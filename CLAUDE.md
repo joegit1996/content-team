@@ -58,6 +58,9 @@ Each agent has specific skills installed. Skills provide reusable capabilities a
 | Data Validator | `arabic-text-processing` | Custom | Arabic Unicode normalization and validation |
 | API Integrator | `api-integration` | [autumnsgrove/groveengine](https://skills.sh/autumnsgrove/groveengine/api-integration) | REST API auth, retry, rate limiting |
 | API Integrator | `data-export` | Custom | CSV/JSON export with nested flattening |
+| Researcher | `paginated-scraping` | Custom | Handle paginated listings — URL params, offset, cursor, infinite scroll |
+| Researcher, Integrator | `image-downloader` | Custom | Download images to local storage, manifest tracking, integrity validation |
+| Schema Architect, Validator, Integrator | `multi-entity-schema` | Custom | Parent-child entity relationships, referential integrity, multi-entity export |
 
 Skills are located in `.agents/skills/` and symlinked to `.claude/skills/`.
 
@@ -74,7 +77,10 @@ content-stock-team/
 │   ├── schema-from-prompt/      # Custom: NLP → schema
 │   ├── data-export/             # Custom: CSV/JSON export
 │   ├── arabic-text-processing/  # Custom: Arabic text handling
-│   └── batch-checkpoint/        # Custom: batch management
+│   ├── batch-checkpoint/        # Custom: batch management
+│   ├── paginated-scraping/      # Custom: paginated listing pages
+│   ├── image-downloader/        # Custom: download images locally
+│   └── multi-entity-schema/     # Custom: parent-child relationships
 ├── .claude/skills/              # Symlinks to .agents/skills/
 ├── schemas/
 │   └── templates/               # Reusable schema templates

@@ -120,7 +120,10 @@ content-team/
 │   ├── schema-from-prompt/      # NLP → JSON schema (custom)
 │   ├── data-export/             # CSV/JSON export (custom)
 │   ├── arabic-text-processing/  # Arabic Unicode handling (custom)
-│   └── batch-checkpoint/        # Batch file management (custom)
+│   ├── batch-checkpoint/        # Batch file management (custom)
+│   ├── paginated-scraping/     # Paginated listings (custom)
+│   ├── image-downloader/       # Image download + manifest (custom)
+│   └── multi-entity-schema/    # Parent-child relationships (custom)
 ├── prompts/                     # Agent role definitions
 │   ├── lead-orchestrator.md
 │   ├── schema-architect.md
@@ -137,7 +140,7 @@ content-team/
 
 ## Skills
 
-8 skills power the agents — 4 from the [Vercel skills registry](https://skills.sh), 4 custom-built:
+11 skills power the agents — 4 from the [Vercel skills registry](https://skills.sh), 7 custom-built:
 
 | Skill | Source | Used By |
 |-------|--------|---------|
@@ -149,6 +152,9 @@ content-team/
 | `batch-checkpoint` | Custom | Researcher |
 | `arabic-text-processing` | Custom | Validator |
 | `data-export` | Custom | Integrator |
+| `paginated-scraping` | Custom | Researcher |
+| `image-downloader` | Custom | Researcher, Integrator |
+| `multi-entity-schema` | Custom | Schema Architect, Validator, Integrator |
 
 ## Advanced Usage
 

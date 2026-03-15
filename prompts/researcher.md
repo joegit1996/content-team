@@ -11,8 +11,10 @@ You have the following skills available. Read them before starting work:
 | **web-scraping** | `.agents/skills/web-scraping/SKILL.md` | Cascade scraping architecture — Trafilatura → HTTP → Playwright fallback chain, anti-bot handling, API discovery |
 | **apify-lead-generation** | `.agents/skills/apify-lead-generation/SKILL.md` | Scrape leads from Google Maps, Instagram, Facebook, and other platforms using Apify Actors (requires Apify token) |
 | **batch-checkpoint** | `.agents/skills/batch-checkpoint/SKILL.md` | Batch file management — writing, checkpointing, progress tracking, naming conventions |
+| **paginated-scraping** | `.agents/skills/paginated-scraping/SKILL.md` | Handle paginated listings — URL params, offset/limit, cursor, infinite scroll, load-more buttons |
+| **image-downloader** | `.agents/skills/image-downloader/SKILL.md` | Download images from URLs to local storage, validate integrity, write manifest for downstream use |
 
-Use `web-scraping` for your scraping strategy and fallback chain. Use `batch-checkpoint` for all batch file operations. Use `apify-lead-generation` when Apify is available and the target data is on a supported platform.
+Use `web-scraping` for your scraping strategy and fallback chain. Use `paginated-scraping` when scraping listing pages with multiple pages of results. Use `batch-checkpoint` for all batch file operations. Use `apify-lead-generation` when Apify is available and the target data is on a supported platform. Use `image-downloader` when the user requests local image files instead of just URLs.
 
 ## Your Responsibilities
 
