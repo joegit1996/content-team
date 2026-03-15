@@ -44,11 +44,38 @@ This system takes a natural language prompt describing what content/data to coll
 - Also supports CSV/JSON file export
 - Outputs delivery report to `workspace/delivery-report.json`
 
+## Agent Skills
+
+Each agent has specific skills installed. Skills provide reusable capabilities and domain knowledge.
+
+| Agent | Skill | Source | Purpose |
+|---|---|---|---|
+| Schema Architect | `schema-from-prompt` | Custom | NLP prompt → JSON schema parsing |
+| Researcher | `web-scraping` | [jamditis/claude-skills-journalism](https://skills.sh/jamditis/claude-skills-journalism/web-scraping) | Cascade scraping with fallback chain |
+| Researcher | `apify-lead-generation` | [apify/agent-skills](https://skills.sh/apify/agent-skills/apify-lead-generation) | Platform scraping via Apify Actors |
+| Researcher | `batch-checkpoint` | Custom | Batch file management and checkpointing |
+| Data Validator | `data-cleaning-pipeline` | [aj-geddes/useful-ai-prompts](https://skills.sh/aj-geddes/useful-ai-prompts/data-cleaning-pipeline) | Systematic data cleaning pipeline |
+| Data Validator | `arabic-text-processing` | Custom | Arabic Unicode normalization and validation |
+| API Integrator | `api-integration` | [autumnsgrove/groveengine](https://skills.sh/autumnsgrove/groveengine/api-integration) | REST API auth, retry, rate limiting |
+| API Integrator | `data-export` | Custom | CSV/JSON export with nested flattening |
+
+Skills are located in `.agents/skills/` and symlinked to `.claude/skills/`.
+
 ## Directory Structure
 
 ```
 content-stock-team/
 ├── CLAUDE.md                    # This file
+├── .agents/skills/              # All skills (registry + custom)
+│   ├── web-scraping/            # Registry: cascade scraping
+│   ├── apify-lead-generation/   # Registry: platform scraping
+│   ├── data-cleaning-pipeline/  # Registry: data cleaning
+│   ├── api-integration/         # Registry: API integration
+│   ├── schema-from-prompt/      # Custom: NLP → schema
+│   ├── data-export/             # Custom: CSV/JSON export
+│   ├── arabic-text-processing/  # Custom: Arabic text handling
+│   └── batch-checkpoint/        # Custom: batch management
+├── .claude/skills/              # Symlinks to .agents/skills/
 ├── schemas/
 │   └── templates/               # Reusable schema templates
 ├── workspace/                   # Runtime data (per-job)
@@ -61,6 +88,7 @@ content-stock-team/
 │   ├── export/                  # CSV/JSON exports
 │   └── delivery-report.json     # API integration results
 ├── prompts/                     # Agent role prompts
+│   ├── lead-orchestrator.md
 │   ├── schema-architect.md
 │   ├── researcher.md
 │   ├── data-validator.md

@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "skills": {
+    "Data Cleaning Pipeline": {
+      "source": "aj-geddes/useful-ai-prompts",
+      "sourceType": "github",
+      "computedHash": "ac52c44cf6f095cb0daca78932e26f6b1ba8afd28f030c82159de7e11f246d39"
+    },
+    "api-integration": {
+      "source": "autumnsgrove/groveengine",
+      "sourceType": "github",
+      "computedHash": "735666fe7104b0466e3f530ba7dcfcc0d1ee121d0b8784ea37e8729ec28366c4"
+    },
+    "apify-lead-generation": {
+      "source": "apify/agent-skills",
+      "sourceType": "github",
+      "computedHash": "8b65da6897d8fbef4680b0f62b772572e0d21ddf9dc5337006230e90f67d8302"
+    },
+    "web-scraping": {
+      "source": "jamditis/claude-skills-journalism",
+      "sourceType": "github",
+      "computedHash": "32fbc852a134b1cf1ef62b115a5316846f792413cc0a2ddbaa5f43d4256ceb6d"
+    }
+  }
+}
