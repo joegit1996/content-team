@@ -61,13 +61,19 @@ The team handles the rest. You'll be asked to:
 
 ## Team Architecture
 
-| Agent | Role | Skills |
-|-------|------|--------|
-| **Lead** | Orchestrates the pipeline, manages tasks, presents results | — |
-| **Schema Architect** | Parses your prompt into a structured JSON schema | `schema-from-prompt` |
-| **Researcher** (1-8) | Collects data from the web, scales with volume | `web-scraping`, `apify-lead-generation`, `batch-checkpoint` |
-| **Data Validator** | Cleans, normalizes, deduplicates collected data | `data-cleaning-pipeline`, `arabic-text-processing` |
-| **API Integrator** | Delivers data to any destination | `api-integration`, `data-export` |
+| Agent | Model | Role | Skills |
+|-------|-------|------|--------|
+| **Lead** | Opus | Orchestrates the pipeline, manages tasks, presents results | — |
+| **Schema Architect** | Opus | Parses your prompt into a structured JSON schema | `schema-from-prompt`, `multi-entity-schema` |
+| **Researcher** (1-8) | Sonnet | Collects data from the web, scales with volume | `web-scraping`, `apify-lead-generation`, `batch-checkpoint`, `paginated-scraping`, `image-downloader` |
+| **Data Validator** | Sonnet | Cleans, normalizes, deduplicates collected data | `data-cleaning-pipeline`, `arabic-text-processing`, `multi-entity-schema` |
+| **API Integrator** | Sonnet | Delivers data to any destination | `api-integration`, `data-export`, `image-downloader`, `multi-entity-schema` |
+
+### Model Strategy
+
+- **Opus** for Lead + Schema Architect — requires reasoning, judgment, and NLP parsing
+- **Sonnet** for Researcher, Validator, Integrator — mechanical tasks, follows clear rules, cost-effective at scale
+- For small runs (≤100 items), Opus everywhere is fine. For large jobs (1000+), Sonnet on researchers saves significant cost.
 
 Researchers auto-scale based on estimated volume:
 
@@ -120,7 +126,10 @@ content-team/
 │   ├── schema-from-prompt/      # NLP → JSON schema (custom)
 │   ├── data-export/             # CSV/JSON export (custom)
 │   ├── arabic-text-processing/  # Arabic Unicode handling (custom)
-│   └── batch-checkpoint/        # Batch file management (custom)
+│   ├── batch-checkpoint/        # Batch file management (custom)
+│   ├── paginated-scraping/     # Paginated listings (custom)
+│   ├── image-downloader/       # Image download + manifest (custom)
+│   └── multi-entity-schema/    # Parent-child relationships (custom)
 ├── prompts/                     # Agent role definitions
 │   ├── lead-orchestrator.md
 │   ├── schema-architect.md
@@ -137,7 +146,7 @@ content-team/
 
 ## Skills
 
-8 skills power the agents — 4 from the [Vercel skills registry](https://skills.sh), 4 custom-built:
+11 skills power the agents — 4 from the [Vercel skills registry](https://skills.sh), 7 custom-built:
 
 | Skill | Source | Used By |
 |-------|--------|---------|
@@ -149,6 +158,9 @@ content-team/
 | `batch-checkpoint` | Custom | Researcher |
 | `arabic-text-processing` | Custom | Validator |
 | `data-export` | Custom | Integrator |
+| `paginated-scraping` | Custom | Researcher |
+| `image-downloader` | Custom | Researcher, Integrator |
+| `multi-entity-schema` | Custom | Schema Architect, Validator, Integrator |
 
 ## Advanced Usage
 

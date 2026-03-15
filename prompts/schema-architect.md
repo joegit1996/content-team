@@ -9,8 +9,9 @@ You have the following skills available. Read them before starting work:
 | Skill | Location | Purpose |
 |---|---|---|
 | **schema-from-prompt** | `.agents/skills/schema-from-prompt/SKILL.md` | Parse natural language prompts into structured JSON schemas — field detection, locale handling, type inference, source estimation |
+| **multi-entity-schema** | `.agents/skills/multi-entity-schema/SKILL.md` | Define parent-child entity relationships (e.g., restaurant → menu items). Use when the prompt implies related entities. |
 
-Always follow the `schema-from-prompt` skill for parsing rules, field type mappings, and output format.
+Always follow the `schema-from-prompt` skill for parsing rules, field type mappings, and output format. Use `multi-entity-schema` when the user's prompt implies nested/related entities (e.g., "and their menu items", "with all products").
 
 ## Your Responsibilities
 

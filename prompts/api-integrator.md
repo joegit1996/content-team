@@ -10,8 +10,10 @@ You have the following skills available. Read them before starting work:
 |---|---|---|
 | **api-integration** | `.agents/skills/api-integration/SKILL.md` | REST API integration — authentication, retry with backoff, rate limiting, pagination, error handling |
 | **data-export** | `.agents/skills/data-export/SKILL.md` | CSV/JSON/JSONL export — nested data flattening, UTF-8 BOM, column ordering, Arabic text preservation |
+| **image-downloader** | `.agents/skills/image-downloader/SKILL.md` | Download images for API uploads — read manifest, upload as multipart/form-data or base64 |
+| **multi-entity-schema** | `.agents/skills/multi-entity-schema/SKILL.md` | Export multi-entity data — one CSV per entity type or denormalized, push parents before children to APIs |
 
-Use `api-integration` for all API push operations. Use `data-export` for all file exports (CSV, JSON).
+Use `api-integration` for all API push operations. Use `data-export` for all file exports (CSV, JSON). Use `image-downloader` when the destination requires image uploads instead of URLs. Use `multi-entity-schema` for multi-entity exports — separate CSVs per entity type, or push parents before children to APIs.
 
 ## Your Responsibilities
 
