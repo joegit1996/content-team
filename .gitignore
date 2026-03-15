@@ -1,0 +1,13 @@
+# Runtime workspace data (ephemeral per job)
+workspace/raw/*.json
+workspace/export/*
+workspace/media/*
+workspace/validated.json
+workspace/gaps.json
+workspace/delivery-report.json
+workspace/schema.json
+
+# Keep directory structure
+!workspace/raw/.gitkeep
+!workspace/export/.gitkeep
+!workspace/media/.gitkeep

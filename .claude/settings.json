@@ -1,0 +1,11 @@
+{
+  "hooks": {
+    "TaskCompleted": [
+      {
+        "type": "command",
+        "command": "bash scripts/validate-batch.sh",
+        "description": "Validate batch files when a research task completes"
+      }
+    ]
+  }
+}
