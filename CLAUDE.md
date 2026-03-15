@@ -8,26 +8,26 @@ This system takes a natural language prompt describing what content/data to coll
 
 ## Team Roles
 
-### Lead (Orchestrator)
+### Lead (Orchestrator) — Opus
 - Receives user prompts and coordinates the pipeline
 - Presents schemas for user approval
 - Manages task assignment and progress
 - Synthesizes final results
 
-### Schema Architect
+### Schema Architect — Opus
 - Parses user prompts into structured JSON schemas
 - Considers locales, nested structures, media fields
 - Outputs schema files with types, validation rules, examples
 - Manages reusable schema templates in `schemas/templates/`
 
-### Researcher (1-N, scales with workload)
+### Researcher (1-N, scales with workload) — Sonnet
 - Searches the web for data matching the approved schema
 - Scrapes individual pages for detailed fields
 - Uses Playwright for JS-rendered content when needed
 - Writes batched results to `workspace/raw/batch-{n}.json`
 - Checkpoints progress to allow resumption
 
-### Data Validator
+### Data Validator — Sonnet
 - Reads all raw batches from researchers
 - Validates against the approved schema
 - Normalizes formats (dates, times, URLs, locales)
@@ -35,12 +35,24 @@ This system takes a natural language prompt describing what content/data to coll
 - Flags missing required fields with gap reports
 - Outputs `workspace/validated.json` and `workspace/gaps.json`
 
-### API Integrator
+### API Integrator — Sonnet
 - Accepts any API/database target — fully dynamic
 - Reads user-provided API specs (URL, auth, endpoints, field mapping)
 - Can read Swagger/OpenAPI docs if provided
 - Maps schema fields to API fields
 - Batch inserts with retry and error reporting
+
+## Model Recommendations
+
+| Agent | Model | Reasoning |
+|---|---|---|
+| Lead | Opus | Orchestration, user interaction, complex coordination |
+| Schema Architect | Opus | NLP reasoning to parse ambiguous prompts into precise schemas |
+| Researcher | Sonnet | Follows clear instructions, mechanical scraping, cost-sensitive at scale |
+| Data Validator | Sonnet | Rule-based checks, normalization, deduplication |
+| API Integrator | Sonnet | Straightforward field mapping, export, and API calls |
+
+For small test runs (≤100 items), Opus everywhere is fine. For large jobs (1000+ items) with multiple researchers, Sonnet for researchers/validator/integrator saves significant cost.
 - Also supports CSV/JSON file export
 - Outputs delivery report to `workspace/delivery-report.json`
 

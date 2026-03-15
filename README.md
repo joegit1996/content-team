@@ -61,13 +61,19 @@ The team handles the rest. You'll be asked to:
 
 ## Team Architecture
 
-| Agent | Role | Skills |
-|-------|------|--------|
-| **Lead** | Orchestrates the pipeline, manages tasks, presents results | — |
-| **Schema Architect** | Parses your prompt into a structured JSON schema | `schema-from-prompt` |
-| **Researcher** (1-8) | Collects data from the web, scales with volume | `web-scraping`, `apify-lead-generation`, `batch-checkpoint` |
-| **Data Validator** | Cleans, normalizes, deduplicates collected data | `data-cleaning-pipeline`, `arabic-text-processing` |
-| **API Integrator** | Delivers data to any destination | `api-integration`, `data-export` |
+| Agent | Model | Role | Skills |
+|-------|-------|------|--------|
+| **Lead** | Opus | Orchestrates the pipeline, manages tasks, presents results | — |
+| **Schema Architect** | Opus | Parses your prompt into a structured JSON schema | `schema-from-prompt`, `multi-entity-schema` |
+| **Researcher** (1-8) | Sonnet | Collects data from the web, scales with volume | `web-scraping`, `apify-lead-generation`, `batch-checkpoint`, `paginated-scraping`, `image-downloader` |
+| **Data Validator** | Sonnet | Cleans, normalizes, deduplicates collected data | `data-cleaning-pipeline`, `arabic-text-processing`, `multi-entity-schema` |
+| **API Integrator** | Sonnet | Delivers data to any destination | `api-integration`, `data-export`, `image-downloader`, `multi-entity-schema` |
+
+### Model Strategy
+
+- **Opus** for Lead + Schema Architect — requires reasoning, judgment, and NLP parsing
+- **Sonnet** for Researcher, Validator, Integrator — mechanical tasks, follows clear rules, cost-effective at scale
+- For small runs (≤100 items), Opus everywhere is fine. For large jobs (1000+), Sonnet on researchers saves significant cost.
 
 Researchers auto-scale based on estimated volume:
 
